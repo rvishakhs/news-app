@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Header from '../components/Header'
+import Newssection from '../components/Newssection'
 import Fetchnews from '../lib/Fetchnews'
 
 type Props = {
@@ -21,7 +22,7 @@ const Home = ({news}: Props) => {
       </Head>
       <Header />
       <div className='max-w-6xl mx-auto px-4 '>
-        Hello world
+        <Newssection />
       </div>
     </div>
   )
