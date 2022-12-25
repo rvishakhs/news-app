@@ -28,7 +28,6 @@ type Pagination = {
 }
 
 type NewsResponse = {
-    filter(): unknown;
     pagination : Pagination;
     data : Article[]
 } 

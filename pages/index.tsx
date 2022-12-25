@@ -13,7 +13,7 @@ type Props = {
 
 const  Home = async ({}: Props) => {
 
-  const news = await Fetchnews(categories.join(","))
+  const news: NewsResponse = await Fetchnews(categories.join(","),"news", true)
 
   console.log(news);
   

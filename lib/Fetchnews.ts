@@ -1,7 +1,6 @@
 import {gql} from "graphql-request"
 import Sortfunction from "./Sortfunction";
 
-
 const Fetchnews = async (
     category?: categories | string,
     keywords?: string,
@@ -14,13 +13,13 @@ const Fetchnews = async (
         $access_key: String!
         $keywords: String
         $category: String!
-        ) {
-        MyQuery(
-            accesskey: $access_key
+        ){
+        myQuery(
+            access_key: $access_key
             category: $category
-            contries: "gb, us, ca, au"
+            contries: "gb"
             sort: "published_desc"
-            keywords: $keywords
+            keywords: $keywords    
         ) {
           data {
             author
@@ -52,40 +51,31 @@ const Fetchnews = async (
         next: isDynamic? {revalidate : 0} : {revalidate : 20},
         headers: {
             'Content-Type': 'application/json',
-            Authorization: `Apikey ${process.env.STEPZEN_API_KEY}`,
+            Authorization: `apikey ${process.env.STEPZEN_API_KEY}`,
         },
-        body : JSON.stringify({
-            query,
-            variables: {
-                access_key: process.env.MEDIASTACK_API_KEY,
-                category: category,
-                keywords: keywords,
-            },
-        })
+        body : JSON.stringify(
+            {query, 
+                variables: {
+                        access_key: process.env.MEDIASTACK_API_KEY,
+                        category: category,
+                        keywords: keywords,        
+                    }
+            }
+        )
     }
-    );
+    )
 
-    console.log("Data from", category, keywords)
+    const newsresponse = await res.json();
 
-        const newsResponse = await res.json();
-
-
-    const data = Sortfunction(newsResponse.data.MyQuery)
-
-    return data;
+    console.log(newsresponse)
 
 
+    // const data = Sortfunction(newsresponse)
 
+    return newsresponse;
 
-
-    // const res = await fetch(`http://api.mediastack.com/v1/news?access_key=${process.env.MEDIASTACK_API_KEY}&sources=cnn,bbc&contries=us,gb,ca,au,nz&sources=business,technology,science&limit=100&offset=0&sort=published_desc`)
-    // const data = await res.json()
-
-    // return data
 }
-
-export default Fetchnews
-
+ export default Fetchnews
 
 
 
