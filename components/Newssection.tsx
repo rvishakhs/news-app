@@ -1,18 +1,41 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { categories } from '../constants'
 import fetchnews from '../lib/fetchnews'
 
 type Props = {}
 
-async function  Newssection  ({}: Props) {
+function  Newssection  ({}: Props) {
 
-  const news: NewsResponse = await fetchnews("business","tech")
+  let [news, setnews] =  useState({})
+
+  useEffect ( () => {
+
+     async function getnews() {
+      try {
+        const res = await fetchnews("business","tech")
+          setnews(res)
+        console.log(res);
+      } catch (err) {
+        console.log(err);
+    }
+       
+    }      
+
+
+     getnews()
+
+     
+  }, [])
+  
+
+
+  console.log(news)
 
   return (
     <div>
-        <p>Haio</p>
+        
     </div>
   )
 }
 
-export default Newssection
+export {Newssection}

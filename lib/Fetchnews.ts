@@ -11,13 +11,9 @@ const fetchnews = async (
     const query = gql`
     query MyQuery(
         $access_key: String!
-        $keywords: String!
-        $categories: String!
         ){
         myQuery(
             access_key: $access_key
-            keywords: $keywords
-            categories: $categories
         ) {
           data {
             author
@@ -66,16 +62,14 @@ const fetchnews = async (
     const newsresponse = await res.json();
 
 
-    console.log(newsresponse)
-
-
-    const data = sortfunction(newsresponse.data.myQuery)
+    const data = await sortfunction(newsresponse.data.myQuery)
 
     return data;
 
 }
+
+
  export default fetchnews
 
-// stepzen import curl "http://api.mediastack.com/v1/news?access_key=5cf66c46b8b41cbd199e0475d7075036&countries=us,gb,au,ca&limit=100&offset=0&sort=published_desc"
 
 

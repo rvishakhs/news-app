@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Header from '../components/Header'
-import Newssection from '../components/Newssection'
+import {Newssection} from '../components/Newssection'
 import { categories } from '../constants'
 import fetchnews from '../lib/fetchnews'
 
@@ -12,10 +12,8 @@ type Props = {
 }
 
 
-const  Home = async ({}: Props) => {
+const  Home = ({}: Props) => {
 
-  
-  
   
   return (
     <div className="bg-gray-100 dark:bg-zinc-900 transition-all duration-700">
