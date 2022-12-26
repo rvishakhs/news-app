@@ -1,12 +1,13 @@
 import React from 'react'
 import { categories } from '../constants'
-import Fetchnews from '../lib/Fetchnews'
+import fetchnews from '../lib/fetchnews'
 
 type Props = {}
 
-function Newssection ({}: Props) {
+async function  Newssection  ({}: Props) {
 
-    // const news = await Fetchnews(categories.join(","))
+  const news: NewsResponse = await fetchnews("business","tech")
+
   return (
     <div>
         <p>Haio</p>

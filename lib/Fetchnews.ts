@@ -1,7 +1,7 @@
 import {gql} from "graphql-request"
-import Sortfunction from "./Sortfunction";
+import sortfunction from "./Sortfunction";
 
-const Fetchnews = async (
+const fetchnews = async (
     category?: categories | string,
     keywords?: string,
     isDynamic?: boolean,
@@ -11,15 +11,13 @@ const Fetchnews = async (
     const query = gql`
     query MyQuery(
         $access_key: String!
-        $keywords: String
-        $category: String!
+        $keywords: String!
+        $categories: String!
         ){
         myQuery(
             access_key: $access_key
-            category: $category
-            contries: "gb"
-            sort: "published_desc"
-            keywords: $keywords    
+            keywords: $keywords
+            categories: $categories
         ) {
           data {
             author
@@ -54,10 +52,10 @@ const Fetchnews = async (
             Authorization: `apikey ${process.env.STEPZEN_API_KEY}`,
         },
         body : JSON.stringify(
-            {query, 
+            {query : query,
                 variables: {
                         access_key: process.env.MEDIASTACK_API_KEY,
-                        category: category,
+                        categories: category,
                         keywords: keywords,        
                     }
             }
@@ -67,16 +65,17 @@ const Fetchnews = async (
 
     const newsresponse = await res.json();
 
+
     console.log(newsresponse)
 
 
-    // const data = Sortfunction(newsresponse)
+    const data = sortfunction(newsresponse.data.myQuery)
 
-    return newsresponse;
+    return data;
 
 }
- export default Fetchnews
+ export default fetchnews
+
+// stepzen import curl "http://api.mediastack.com/v1/news?access_key=5cf66c46b8b41cbd199e0475d7075036&countries=us,gb,au,ca&limit=100&offset=0&sort=published_desc"
 
 
-
-// http://api.mediastack.com/v1/news?access_key=cf1e847539cf4fd3f9d5fbd7da7ce1c0&sources=cnn,bbc&contries=us,gb,ca,au,nz&sources=business,technology,science&limit=100&offset=0&sort=published_desc

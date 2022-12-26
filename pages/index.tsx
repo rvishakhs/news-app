@@ -4,7 +4,8 @@ import Image from 'next/image'
 import Header from '../components/Header'
 import Newssection from '../components/Newssection'
 import { categories } from '../constants'
-import Fetchnews from '../lib/Fetchnews'
+import fetchnews from '../lib/fetchnews'
+
 
 type Props = {
   news : any
@@ -13,9 +14,7 @@ type Props = {
 
 const  Home = async ({}: Props) => {
 
-  const news: NewsResponse = await Fetchnews(categories.join(","),"news", true)
-
-  console.log(news);
+  
   
   
   return (
@@ -34,15 +33,3 @@ const  Home = async ({}: Props) => {
 
 export default Home
 
-
-// export const getServerSideProps  = async () => {
-
-//   const news : any = await Fetchnews();
-
-//   return {
-//     props : {
-//         news
-//     }
-//   }
-
-// }
