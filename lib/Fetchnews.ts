@@ -1,5 +1,6 @@
 import {gql} from "graphql-request"
-import sortfunction from "./Sortfunction";
+import sortfunction from "./sortfunction";
+import React, {useState, useEffect} from 'react'
 
 const fetchnews = async (
     category?: categories | string,
@@ -11,9 +12,14 @@ const fetchnews = async (
     const query = gql`
     query MyQuery(
         $access_key: String!
+        $keywords: String!
+        $categories: String!
         ){
         myQuery(
             access_key: $access_key
+            keywords: $keywords
+            categories: $categories
+            countries: "gb"
         ) {
           data {
             author
@@ -59,13 +65,12 @@ const fetchnews = async (
     }
     )
 
-    const newsresponse = await res.json();
+    const newsResponse = await res.json();
+
+    const data = await sortfunction(newsResponse.data.myQuery)
 
 
-    const data = await sortfunction(newsresponse.data.myQuery)
-
-    return data;
-
+    return data
 }
 
 
