@@ -8,6 +8,7 @@ type categories =
 | "Technology" 
 
 type Article = {
+    map(arg0: (article: any) => JSX.Element): React.ReactNode;
     author: string | null;
     category: string;
     country:string;

@@ -21,13 +21,13 @@ const  Home =  ({news}: Props) => {
  
 
   return (
-    <div className="bg-gray-100 dark:bg-zinc-900 transition-all duration-700">
+    <div className="bg-gray-100 dark:bg-zinc-900  transition-all duration-700">
       <Head>
         <title>The Better Bulletins</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <div className='max-w-6xl mx-auto px-4 '>
+      <div className='max-w-6xl  mx-auto px-4 '>
         <Newssection allnews={news} />
       </div>
     </div>
