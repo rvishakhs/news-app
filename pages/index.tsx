@@ -5,20 +5,18 @@ import Header from '../components/Header'
 import { categories } from '../constants'
 import fetchnews from '../lib/fetchnews'
 import React, {useState, useEffect} from 'react'
+import Newssection from '../components/Newssection'
 
 
 
 type Props = {
-  news : NewsResponse
+  news : Article
 }
 
 const  Home =  ({news}: Props) => {
 
-  console.log(news)
-  
-  const category = categories.join(",")
 
-  console.log(category);
+  // console.log(news);
   
  
 
@@ -30,8 +28,7 @@ const  Home =  ({news}: Props) => {
       </Head>
       <Header />
       <div className='max-w-6xl mx-auto px-4 '>
-{/* 
-        <Function /> */}
+        <Newssection allnews={news} />
       </div>
     </div>
   )
@@ -41,10 +38,10 @@ export default Home
 
 export const getServerSideProps : GetServerSideProps = async() => {
 
-  const news : NewsResponse = await fetchnews("" ,"news")
+  const news : Article[] = await fetchnews("" ,"news")
   return {
     props : {
-      news: {news}
+      news : news
     }
   }
 }

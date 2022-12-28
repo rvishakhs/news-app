@@ -28,6 +28,6 @@ type Pagination = {
 }
 
 type NewsResponse = {
-    pagination : Pagination;
+    // pagination : Pagination;
     data : Article[]
 } 
