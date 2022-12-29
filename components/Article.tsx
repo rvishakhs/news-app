@@ -1,5 +1,6 @@
 import moment from 'moment'
 import React from 'react'
+import Readmorebtn from './Readmorebtn'
 
 type Props = {
     news: Article
@@ -28,7 +29,7 @@ export default function Article({news}: Props) {
             </footer>
 
             <div className='flex mt-2 w-full mx-auto'>
-              <button className='px-2 w-3/4 mx-auto md:w-full rounded-md border border-gray-500 py-2 font-semibold'>Read more</button>
+              <Readmorebtn article={news} />
             </div>
           </div>
         </div>
