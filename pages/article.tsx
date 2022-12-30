@@ -1,18 +1,21 @@
 
-
+import { useRouter } from 'next/router'
 import React from 'react'
 import { notFound } from 'next/navigation'
 import Header from '../components/Header';
 
 
 type Props = {
-    searchParams? : Article 
+    query : Article 
 }
 
-function article({searchParams}: Props) {
+function article({query}: Props) {
 
 
+    const router = useRouter()
+    const article : any  = router.query
 
+    
     // if (
     // (searchParams && Object.entries(searchParams).length ===0) || 
     // !searchParams 
@@ -20,7 +23,6 @@ function article({searchParams}: Props) {
     //     return notFound()
     // }
 
-    const article : Article = searchParams  
     
     console.log(article);
     

@@ -19,7 +19,8 @@ const fetchnews = async (
             access_key: $access_key
             keywords: $keywords
             categories: $categories
-            countries: "gb"
+            countries: "gb,au,us,ca"
+            sort: "published_desc"
         ) {
           data {
             author

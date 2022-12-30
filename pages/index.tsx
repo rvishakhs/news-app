@@ -38,7 +38,7 @@ export default Home
 
 export const getServerSideProps : GetServerSideProps = async() => {
 
-  const news : Article[] = await fetchnews("" ,"news")
+  const news : Article[] = await fetchnews("" ,"")
   return {
     props : {
       news : news

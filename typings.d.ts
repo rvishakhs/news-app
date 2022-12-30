@@ -13,7 +13,7 @@ type Article = {
     category: string;
     country:string;
     description: string;
-    image: string | null;
+    image: string | string[] | undefined
     language: string;
     published_at: string;
     source: string;
