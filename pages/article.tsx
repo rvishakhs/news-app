@@ -21,16 +21,7 @@ function article({query}: Props) {
     const router = useRouter()
     const article : any  = router.query
 
-    
-    // if (
-    // (searchParams && Object.entries(searchParams).length ===0) || 
-    // !searchParams 
-    // ) {
-    //     return notFound()
-    // }
 
-    
-    console.log(article);
 
     const a = Math.floor(Math.random() * text.length);
 
@@ -66,11 +57,9 @@ function article({query}: Props) {
                     )}
                 </div>
 
-                <div className='my-6'>
-                    <p className='font-sans text-justify font-medium'>{article.description}{text}</p>
+                <div className='my-6 px-6'>
+                    <p className='font-sans font-medium'>{article.description}{text}</p>
                     <p className='font-sans mt-1 text-justify font-medium'>{article.description}{text}</p>
-
-                    
 
                 </div>
 
