@@ -3,7 +3,7 @@ import React from 'react'
 import Readmorebtn from './Readmorebtn'
 
 type Props = {
-    news: Article
+    news: any
 }
 
 export default function Article({news}: Props) {
