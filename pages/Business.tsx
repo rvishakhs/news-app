@@ -18,7 +18,7 @@ type Props = {
 
 
 
-function search({news}: Props) {
+function business({news}: Props) {
 
     // const [data, setdata] = useState()
     // const router = useRouter()
@@ -51,13 +51,13 @@ function search({news}: Props) {
   )
 }
 
-export default search
+export default business
 
 
 export async function getStaticProps() {
     
 
-    const searchresult : Article[] = await fetchnews("","india",true); 
+    const searchresult : Article[] = await fetchnews("business","",true); 
 
     return {
       props : {
