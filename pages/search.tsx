@@ -7,44 +7,33 @@ import fetchnews from '../lib/fetchnews'
 import { useRouter } from 'next/router'
 import { GetServerSideProps } from 'next'
 import searching from '../lib/search';
+import router from 'next/dist/server/router';
+
 
 
 type Props = {
     news : Article 
     LoremIpsum : string
-
-
 }
 
-// async function searching() {            
-//     const router = useRouter()
-//     const searchvalue  = router.query.q
-//     const searchresult = JSON.stringify(searchvalue)
-//     return searchresult
-// }
 
-    let searchkey : any
 
 function search({news}: Props) {
 
-    // const [value, setvalue] = useState([])
 
-    // const router = useRouter()
-    // searchkey  = router.query.q
     
-    // useEffect(()=> {
-    //     let value =  searching(searchkey)
-    //     setvalue(value)
-    // }, [])
 
-    // console.log(value);
+
+
+
+
     
     
   return (
     <>
         <Header />
         <div className='max-w-6xl  mx-auto px-4 '>
-            <Newssection allnews={news} />
+            {/* <Newssection allnews={news} /> */}
       </div>
     </>
   )
@@ -55,14 +44,32 @@ export default search
 
 export async function getStaticProps() {
 
-    const word = "india"
+    let newsdata : any
 
-    const news = searching(word)
+    // if (typeof window !== "undefined") {
+
+        
+    //     newsdata = data
+        
+    //     console.log(data);
+        
+    // }
+    
+    console.log(newsdata);
+    
+    let params = new URLSearchParams(window.location.search)  
+    const data = params.get('q')
+
+
+    
+
+    const searchresult : Article[] = await fetchnews("","india",true); 
 
     return {
       props : {
-        news : news
+        news : searchresult
       }
     }
 }
+
   
