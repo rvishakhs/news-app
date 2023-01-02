@@ -6,6 +6,7 @@ import Newssection from '../components/Newssection'
 import fetchnews from '../lib/fetchnews'
 import { useRouter } from 'next/router'
 import { GetServerSideProps } from 'next'
+import searching from '../lib/search';
 
 
 type Props = {
@@ -26,25 +27,24 @@ type Props = {
 
 function search({news}: Props) {
 
-    const [value, setvalue] = useState()
+    // const [value, setvalue] = useState([])
 
-    const router = useRouter()
-    searchkey  = router.query.q
+    // const router = useRouter()
+    // searchkey  = router.query.q
     
-    useEffect(() => {
+    // useEffect(()=> {
+    //     let value =  searching(searchkey)
+    //     setvalue(value)
+    // }, [])
 
-        searching()
-    }, [])
-
-    console.log(searchkey);
+    // console.log(value);
     
-
     
   return (
     <>
         <Header />
         <div className='max-w-6xl  mx-auto px-4 '>
-            {/* <Newssection allnews={news} /> */}
+            <Newssection allnews={news} />
       </div>
     </>
   )
@@ -53,13 +53,12 @@ function search({news}: Props) {
 export default search
 
 
-export async function searching() {
+export async function getStaticProps() {
 
-    const data =  JSON.stringify(searchkey)
+    const word = "india"
 
-    console.log(data);
-    
-    const news : Article[] = await fetchnews("","india",true);
+    const news = searching(word)
+
     return {
       props : {
         news : news
