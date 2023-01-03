@@ -57,7 +57,7 @@ export default entertainment
 export async function getStaticProps() {
     
 
-    const searchresult : Article[] = await fetchnews("entertainment","",true); 
+    const searchresult : Article[] = await fetchnews("entertainment","",false); 
 
     return {
       props : {
