@@ -5,6 +5,7 @@ import Header from '../components/Header';
 import moment from 'moment';
 import { loremIpsum  } from 'react-lorem-ipsum';
 import text from '../lib/data';
+import Head from 'next/head';
 
 
 
@@ -29,6 +30,10 @@ function article({query}: Props) {
     
   return (
     <>
+    <Head>
+        <title>TBB | Article</title>
+        <link rel="icon" href="/favicon.ico" />
+    </Head>
     <Header />
     <article className='max-w-7xl mx-auto'>
             <section className='mt-2 '>

@@ -8,6 +8,7 @@ import { useRouter } from 'next/router'
 import { GetServerSideProps } from 'next'
 import searching from '../lib/search';
 import router from 'next/dist/server/router';
+import Head from 'next/head'
 
 
 
@@ -43,6 +44,12 @@ function health({news}: Props) {
     
   return (
     <>
+      <Head>
+        <title>TBB | Health</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      
+
         <Header />
         <div className='max-w-6xl  mx-auto px-4 '>
             <Newssection allnews={news} />
