@@ -28,12 +28,14 @@ function search({news}: Props) {
     let datanews = "india "
 
     console.log(querykeyword);
+
+    const searchdata =  searching(query)      
     
 
-    useEffect(()=> {
-        const searchdata =  searching(datanews)      
+    // useEffect(()=> {
+    //     const searchdata =  searching(query)      
 
-    },[])
+    // },[query])
 
 
   return (
